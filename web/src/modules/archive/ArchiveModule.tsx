@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { SpellRecipe, PantryItem } from '../../types';
 import { matchRecipeAvailability } from '../../utils/matcher';
-import { Sparkles, ShieldAlert, Clock, Flame, Droplets, Wind, Mountain, Compass } from 'lucide-react';
+import { Sparkles, ShieldAlert, Clock, Flame, Droplets, Wind, Mountain, Compass, ShoppingBag } from 'lucide-react';
 
 interface ArchiveModuleProps {
   recipes: SpellRecipe[];
   pantryItems: PantryItem[];
   onExecuteRecipe: (recipe: SpellRecipe) => { success: boolean; message: string };
+  onNavigateToMarket?: (reagentName: string) => void;
 }
 
 export const ArchiveModule: React.FC<ArchiveModuleProps> = ({
   recipes,
   pantryItems,
-  onExecuteRecipe
+  onExecuteRecipe,
+  onNavigateToMarket
 }) => {
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>('All');
   const [selectedAffinity, setSelectedAffinity] = useState<string>('All');
@@ -162,7 +164,19 @@ export const ArchiveModule: React.FC<ArchiveModuleProps> = ({
                           hasEnough ? 'bg-obsidian-900/60 text-vellum-200' : 'bg-rose-950/30 text-rose-300 border border-rose-900/40'
                         }`}
                       >
-                        <span>{req.name}</span>
+                        <span className="flex items-center gap-1.5">
+                          <span>{req.name}</span>
+                          {!hasEnough && onNavigateToMarket && (
+                            <button
+                              onClick={() => onNavigateToMarket(req.name)}
+                              className="text-[9px] bg-gold-500/20 hover:bg-gold-500/30 text-gold-300 px-1.5 py-0.2 rounded border border-gold-500/40 flex items-center gap-0.5"
+                              title="Order this missing supply from the Marketplace"
+                            >
+                              <ShoppingBag className="w-2.5 h-2.5" />
+                              <span>Order</span>
+                            </button>
+                          )}
+                        </span>
                         <span className="font-mono text-[11px]">
                           {req.quantity} {req.unit} <span className="opacity-50">({currentQty} in pantry)</span>
                         </span>

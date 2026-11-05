@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { PantryItem, PantryCategory } from '../../types';
 import { calculateLunarPhase, getLunarPhaseGlyph } from '../../utils/lunar';
-import { Plus, AlertTriangle, Leaf, Bird, Gem, Wrench } from 'lucide-react';
+import { Plus, AlertTriangle, Leaf, Bird, Gem, Wrench, ShoppingBag } from 'lucide-react';
 
 interface PantryModuleProps {
   items: PantryItem[];
   onAddItem: (item: PantryItem) => void;
   onDeleteItem?: (id: string) => void;
+  onNavigateToMarket?: (reagentName: string) => void;
 }
 
-export const PantryModule: React.FC<PantryModuleProps> = ({ items, onAddItem }) => {
+export const PantryModule: React.FC<PantryModuleProps> = ({ items, onAddItem, onNavigateToMarket }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -75,12 +76,22 @@ export const PantryModule: React.FC<PantryModuleProps> = ({ items, onAddItem }) 
             Apothecary inventory, shelf-life thresholds, and lunar harvest alignment.
           </p>
         </div>
-        <button
-          onClick={() => setIsAddModalOpen(true)}
-          className="flex items-center gap-2 px-3.5 py-2 bg-gold-500 hover:bg-gold-600 text-obsidian-900 font-semibold text-xs rounded-md shadow-xs transition"
-        >
-          <Plus className="w-4 h-4" /> Log New Reagent
-        </button>
+        <div className="flex gap-2">
+          {onNavigateToMarket && (
+            <button
+              onClick={() => onNavigateToMarket('')}
+              className="flex items-center gap-1.5 px-3 py-2 bg-obsidian-800 hover:bg-obsidian-700 border border-gold-500/40 text-gold-400 font-semibold text-xs rounded-md transition shadow-xs"
+            >
+              <ShoppingBag className="w-3.5 h-3.5" /> Order Supplies
+            </button>
+          )}
+          <button
+            onClick={() => setIsAddModalOpen(true)}
+            className="flex items-center gap-2 px-3.5 py-2 bg-gold-500 hover:bg-gold-600 text-obsidian-900 font-semibold text-xs rounded-md shadow-xs transition"
+          >
+            <Plus className="w-4 h-4" /> Log New Reagent
+          </button>
+        </div>
       </div>
 
       {/* Filter Tabs & Search */}
@@ -160,18 +171,27 @@ export const PantryModule: React.FC<PantryModuleProps> = ({ items, onAddItem }) 
                   </span>
                 </div>
 
-                {item.lunar_phase && (
-                  <div className="text-right">
+                <div className="flex flex-col items-end gap-1.5">
+                  {item.lunar_phase && (
                     <span className="text-xs" title={item.lunar_phase}>
                       {lunarGlyph} {item.lunar_phase}
                     </span>
-                    {item.harvest_date && (
-                      <span className="text-[10px] text-vellum-200/40 block">
-                        {new Date(item.harvest_date).toLocaleDateString()}
-                      </span>
-                    )}
-                  </div>
-                )}
+                  )}
+                  {onNavigateToMarket && (
+                    <button
+                      onClick={() => onNavigateToMarket(item.name.split('(')[0].trim())}
+                      className={`text-[10px] font-semibold px-2 py-0.5 rounded flex items-center gap-1 transition ${
+                        isLowStock
+                          ? 'bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40'
+                          : 'bg-obsidian-700 hover:bg-obsidian-600 text-vellum-200'
+                      }`}
+                      title="Reorder this reagent from the Apothecary Marketplace"
+                    >
+                      <ShoppingBag className="w-2.5 h-2.5" />
+                      <span>{isLowStock ? 'Restock Now' : 'Order More'}</span>
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           );

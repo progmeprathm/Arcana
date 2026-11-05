@@ -3,15 +3,17 @@ import { PantryItem, SpellRecipe, JournalEntry, ArcaneProfile, BarterListing } f
 import { INITIAL_PANTRY, INITIAL_SPELLS, INITIAL_JOURNAL, INITIAL_PROFILE, INITIAL_BARTER } from './data/seed';
 import { PantryModule } from './modules/pantry/PantryModule';
 import { ArchiveModule } from './modules/archive/ArchiveModule';
+import { MarketplaceModule } from './modules/market/MarketplaceModule';
 import { ChronicleModule } from './modules/chronicle/ChronicleModule';
 import { CovenModule } from './modules/coven/CovenModule';
 import { SanctumModule } from './modules/sanctum/SanctumModule';
 import { DiscretionCamouflage } from './components/DiscretionCamouflage';
 import { calculateLunarPhase, getLunarPhaseGlyph } from './utils/lunar';
-import { Package, BookOpen, Feather, Users, ShieldAlert, UserCircle } from 'lucide-react';
+import { Package, BookOpen, Feather, Users, ShieldAlert, UserCircle, ShoppingBag } from 'lucide-react';
 
 export const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'pantry' | 'archive' | 'chronicle' | 'coven' | 'sanctum'>('pantry');
+  const [activeTab, setActiveTab] = useState<'pantry' | 'archive' | 'marketplace' | 'chronicle' | 'coven' | 'sanctum'>('pantry');
+  const [marketSearchQuery, setMarketSearchQuery] = useState('');
   const [isPanicActive, setIsPanicActive] = useState(false);
 
   // Core reactive entities
@@ -148,6 +150,31 @@ export const App: React.FC = () => {
     setProfile(prev => ({ ...prev, verification_status: 'Initiate' }));
   };
 
+  const handleNavigateToMarket = (reagentQuery?: string) => {
+    if (reagentQuery !== undefined) {
+      setMarketSearchQuery(reagentQuery);
+    }
+    setActiveTab('marketplace');
+  };
+
+  const handleRestockPantry = (updatedPantry: PantryItem[], notice: string) => {
+    setPantryItems(updatedPantry);
+
+    // Auto-record restock log in chronicle
+    const restockEntry: JournalEntry = {
+      id: `jrn-restock-${Date.now()}`,
+      user_id: profile.id,
+      title: 'Apothecary Restock Order Received',
+      formatted_body: `**Apothecary Supply Restock Fulfilled**\n\n${notice}\n\nPantry balances updated automatically under active lunar cycle.`,
+      linked_pantry_ids: updatedPantry.slice(0, 3).map((p) => p.id),
+      outcome_rating: 5,
+      lunar_phase: currentLunar.phase,
+      weather_conditions: 'Sanctum inventory restocked',
+      created_at: new Date().toISOString()
+    };
+    setJournalEntries((prev) => [restockEntry, ...prev]);
+  };
+
   return (
     <div className="min-h-screen bg-obsidian-900 text-vellum-100 flex flex-col font-sans">
       {/* Panic / Discretion Camouflage Screen */}
@@ -203,6 +230,7 @@ export const App: React.FC = () => {
           {[
             { id: 'pantry', label: 'Pantry (Supplies)', icon: Package },
             { id: 'archive', label: 'Archive (Spells)', icon: BookOpen },
+            { id: 'marketplace', label: 'Market (Reagents)', icon: ShoppingBag },
             { id: 'chronicle', label: 'Chronicle (Notes)', icon: Feather },
             { id: 'coven', label: 'Coven (Exchange)', icon: Users },
             { id: 'sanctum', label: 'Sanctum (Profile)', icon: UserCircle },
@@ -234,6 +262,7 @@ export const App: React.FC = () => {
             items={pantryItems}
             onAddItem={handleAddItem}
             onDeleteItem={handleDeleteItem}
+            onNavigateToMarket={handleNavigateToMarket}
           />
         )}
 
@@ -242,6 +271,15 @@ export const App: React.FC = () => {
             recipes={recipes}
             pantryItems={pantryItems}
             onExecuteRecipe={handleExecuteRecipe}
+            onNavigateToMarket={handleNavigateToMarket}
+          />
+        )}
+
+        {activeTab === 'marketplace' && (
+          <MarketplaceModule
+            pantryItems={pantryItems}
+            onRestockPantry={handleRestockPantry}
+            initialQuery={marketSearchQuery}
           />
         )}
 

@@ -85,3 +85,35 @@ export interface BarterListing {
   notes?: string;
   created_at: string;
 }
+
+export interface MarketItem {
+  id: string;
+  name: string;
+  botanical_name?: string;
+  category: PantryCategory;
+  unit_price: number;
+  currency: string;
+  unit: string;
+  package_size: number;
+  in_stock: boolean;
+  supplier_name: string;
+  provenance: string;
+  ethical_harvest_grade: 'Wildcrafted' | 'Organic' | 'Artisanal' | 'EthicallySourced';
+  description: string;
+}
+
+export interface MarketOrderItem {
+  market_item: MarketItem;
+  order_quantity: number; // number of packages
+  total_units: number;    // package_size * order_quantity
+}
+
+export interface MarketOrder {
+  id: string;
+  items: MarketOrderItem[];
+  total_amount: number;
+  currency: string;
+  status: 'Pending' | 'Dispatched' | 'Delivered';
+  created_at: string;
+}
+

@@ -128,3 +128,4 @@ public struct ChronicleView: View {
         .cornerRadius(8)
     }
 }
+

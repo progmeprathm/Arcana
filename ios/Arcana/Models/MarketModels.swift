@@ -52,3 +52,4 @@ public struct MarketItem: Identifiable, Codable {
         self.description = description
     }
 }
+

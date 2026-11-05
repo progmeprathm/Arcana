@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CovenSpecs",
+  "definitions": {
+    "InviteToken": {
+      "type": "object",
+      "required": ["token_id", "issuer_user_id", "ed25519_signature", "public_key", "is_redeemed", "expires_at"],
+      "properties": {
+        "token_id": { "type": "string", "format": "uuid" },
+        "issuer_user_id": { "type": "string", "format": "uuid" },
+        "ed25519_signature": { "type": "string" },
+        "public_key": { "type": "string" },
+        "nonce": { "type": "string" },
+        "is_redeemed": { "type": "boolean", "default": false },
+        "expires_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "BarterListing": {
+      "type": "object",
+      "required": ["id", "author_id", "author_arcane_name", "offering_item", "offering_quantity", "requesting_item", "created_at"],
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "author_id": { "type": "string", "format": "uuid" },
+        "author_arcane_name": { "type": "string" },
+        "offering_item": { "type": "string" },
+        "offering_quantity": { "type": "string" },
+        "requesting_item": { "type": "string" },
+        "circle_visibility": { "type": "string", "enum": ["Public", "ApplicationOnly", "Hidden"] },
+        "notes": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}

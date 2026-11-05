@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JournalEntry",
+  "type": "object",
+  "required": ["id", "user_id", "title", "formatted_body", "created_at"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "user_id": { "type": "string", "format": "uuid" },
+    "title": { "type": "string" },
+    "raw_ocr_text": { "type": ["string", "null"] },
+    "formatted_body": { "type": "string" },
+    "linked_spell_id": { "type": ["string", "null"] },
+    "linked_pantry_ids": { "type": "array", "items": { "type": "string" } },
+    "outcome_rating": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "lunar_phase": { "type": ["string", "null"] },
+    "weather_conditions": { "type": ["string", "null"] },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

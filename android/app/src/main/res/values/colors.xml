@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="obsidian_950">#0A0B0D</color>
+    <color name="obsidian_900">#121316</color>
+    <color name="obsidian_800">#1B1D22</color>
+    <color name="obsidian_700">#262930</color>
+    <color name="vellum_100">#F4F1EA</color>
+    <color name="vellum_200">#E7E1D2</color>
+    <color name="sage_500">#5E7058</color>
+    <color name="gold_500">#D4AF37</color>
+    <color name="gold_400">#E5BE40</color>
+</resources>

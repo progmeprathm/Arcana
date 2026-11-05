@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ArcaneProfile",
+  "type": "object",
+  "required": ["id", "arcane_name", "tradition", "affinities", "focus_item", "verification_status"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "arcane_name": { "type": "string" },
+    "tradition": { "type": "string" },
+    "affinities": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["Earth", "Air", "Fire", "Water", "Aether"] }
+    },
+    "focus_item": { "type": "string", "enum": ["Wand", "Athame", "Ring", "Chalice", "Pentacle", "Other"] },
+    "verification_status": { "type": "string", "enum": ["Guest", "Initiate", "Adept", "CircleAdmin"] },
+    "is_profile_public": { "type": "boolean", "default": false },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

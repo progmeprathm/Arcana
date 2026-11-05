@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+bin/
+out/
+target/
+
+# Gradle & Android
+.gradle/
+*.apk
+*.aab
+local.properties
+
+# iOS & Xcode
+*.xcuserstate
+project.xcworkspace/xcuserdata/
+xcuserdata/
+*.ipa
+.DS_Store
+
+# Environment & IDE
+.env
+.env.local
+.vscode/
+.idea/
+*.swp
+

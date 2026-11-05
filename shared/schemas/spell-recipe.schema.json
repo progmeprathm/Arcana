@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SpellRecipe",
+  "type": "object",
+  "required": ["id", "name", "category", "difficulty", "instructions", "required_supplies"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "category": { "type": "string" },
+    "difficulty": { "type": "string", "enum": ["Beginner", "Initiate", "Adept", "Master"] },
+    "affinity": { "type": "string", "enum": ["Earth", "Air", "Fire", "Water", "Aether"] },
+    "duration_minutes": { "type": "integer", "minimum": 1 },
+    "safety_warnings": { "type": "array", "items": { "type": "string" } },
+    "instructions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "required_supplies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "quantity", "unit"],
+        "properties": {
+          "pantry_item_id": { "type": ["string", "null"] },
+          "name": { "type": "string" },
+          "quantity": { "type": "number", "minimum": 0 },
+          "unit": { "type": "string" }
+        }
+      }
+    }
+  }
+}

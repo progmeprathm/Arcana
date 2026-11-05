@@ -1,0 +1,312 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A1000001 /* ArcanaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001 /* ArcanaApp.swift */; };
+		A1000002 /* PantryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000002 /* PantryItem.swift */; };
+		A1000003 /* SpellRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000003 /* SpellRecipe.swift */; };
+		A1000004 /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000004 /* JournalEntry.swift */; };
+		A1000005 /* ArcaneProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000005 /* ArcaneProfile.swift */; };
+		A1000006 /* CovenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000006 /* CovenModels.swift */; };
+		A1000007 /* RecipeMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000007 /* RecipeMatcher.swift */; };
+		A1000008 /* LunarCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000008 /* LunarCalculator.swift */; };
+		A1000009 /* TokenVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000009 /* TokenVerifier.swift */; };
+		A1000010 /* DiscretionCamouflageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000010 /* DiscretionCamouflageView.swift */; };
+		A1000011 /* PantryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000011 /* PantryView.swift */; };
+		B1000001 /* RecipeMatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2000001 /* RecipeMatcherTests.swift */; };
+		B1000002 /* LunarCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2000002 /* LunarCalculatorTests.swift */; };
+		B1000003 /* TokenVerifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2000003 /* TokenVerifierTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A0000001 /* Arcana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arcana.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2000001 /* ArcanaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcanaApp.swift; sourceTree = "<group>"; };
+		A2000002 /* PantryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryItem.swift; sourceTree = "<group>"; };
+		A2000003 /* SpellRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellRecipe.swift; sourceTree = "<group>"; };
+		A2000004 /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
+		A2000005 /* ArcaneProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcaneProfile.swift; sourceTree = "<group>"; };
+		A2000006 /* CovenModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovenModels.swift; sourceTree = "<group>"; };
+		A2000007 /* RecipeMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeMatcher.swift; sourceTree = "<group>"; };
+		A2000008 /* LunarCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunarCalculator.swift; sourceTree = "<group>"; };
+		A2000009 /* TokenVerifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenVerifier.swift; sourceTree = "<group>"; };
+		A2000010 /* DiscretionCamouflageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscretionCamouflageView.swift; sourceTree = "<group>"; };
+		A2000011 /* PantryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryView.swift; sourceTree = "<group>"; };
+		B0000001 /* ArcanaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArcanaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2000001 /* RecipeMatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeMatcherTests.swift; sourceTree = "<group>"; };
+		B2000002 /* LunarCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunarCalculatorTests.swift; sourceTree = "<group>"; };
+		B2000003 /* TokenVerifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenVerifierTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		00000000 /* MainGroup */ = {
+			isa = PBXGroup;
+			children = (
+				A0000010 /* Arcana */,
+				B0000010 /* ArcanaTests */,
+				00000001 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		00000001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A0000001 /* Arcana.app */,
+				B0000001 /* ArcanaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A0000010 /* Arcana */ = {
+			isa = PBXGroup;
+			children = (
+				A2000001 /* ArcanaApp.swift */,
+				A0000020 /* Models */,
+				A0000030 /* Services */,
+				A0000040 /* Views */,
+			);
+			path = Arcana;
+			sourceTree = "<group>";
+		};
+		A0000020 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A2000002 /* PantryItem.swift */,
+				A2000003 /* SpellRecipe.swift */,
+				A2000004 /* JournalEntry.swift */,
+				A2000005 /* ArcaneProfile.swift */,
+				A2000006 /* CovenModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A0000030 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A2000007 /* RecipeMatcher.swift */,
+				A2000008 /* LunarCalculator.swift */,
+				A2000009 /* TokenVerifier.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A0000040 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A2000010 /* DiscretionCamouflageView.swift */,
+				A2000011 /* PantryView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B0000010 /* ArcanaTests */ = {
+			isa = PBXGroup;
+			children = (
+				B2000001 /* RecipeMatcherTests.swift */,
+				B2000002 /* LunarCalculatorTests.swift */,
+				B2000003 /* TokenVerifierTests.swift */,
+			);
+			path = ArcanaTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A0000100 /* Arcana */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0000200 /* Build configuration list for PBXNativeTarget "Arcana" */;
+			buildPhases = (
+				A0000101 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Arcana;
+			productName = Arcana;
+			productReference = A0000001 /* Arcana.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B0000100 /* ArcanaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0000200 /* Build configuration list for PBXNativeTarget "ArcanaTests" */;
+			buildPhases = (
+				B0000101 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ArcanaTests;
+			productName = ArcanaTests;
+			productReference = B0000001 /* ArcanaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		00000100 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = 00000200 /* Build configuration list for PBXProject "Arcana" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 00000000 /* MainGroup */;
+			productRefGroup = 00000001 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A0000100 /* Arcana */,
+				B0000100 /* ArcanaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A0000101 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1000001 /* ArcanaApp.swift in Sources */,
+				A1000002 /* PantryItem.swift in Sources */,
+				A1000003 /* SpellRecipe.swift in Sources */,
+				A1000004 /* JournalEntry.swift in Sources */,
+				A1000005 /* ArcaneProfile.swift in Sources */,
+				A1000006 /* CovenModels.swift in Sources */,
+				A1000007 /* RecipeMatcher.swift in Sources */,
+				A1000008 /* LunarCalculator.swift in Sources */,
+				A1000009 /* TokenVerifier.swift in Sources */,
+				A1000010 /* DiscretionCamouflageView.swift in Sources */,
+				A1000011 /* PantryView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0000101 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1000001 /* RecipeMatcherTests.swift in Sources */,
+				B1000002 /* LunarCalculatorTests.swift in Sources */,
+				B1000003 /* TokenVerifierTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		00000201 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		00000202 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A0000201 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Arcana;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcana.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A0000202 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Arcana;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcana.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B0000201 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcana.appTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Arcana.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Arcana";
+			};
+			name = Debug;
+		};
+		B0000202 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcana.appTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Arcana.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Arcana";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00000200 /* Build configuration list for PBXProject "Arcana" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00000201 /* Debug */,
+				00000202 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0000200 /* Build configuration list for PBXNativeTarget "Arcana" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0000201 /* Debug */,
+				A0000202 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B0000200 /* Build configuration list for PBXNativeTarget "ArcanaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0000201 /* Debug */,
+				B0000202 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 00000100 /* Project object */;
+}

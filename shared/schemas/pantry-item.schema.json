@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PantryItem",
+  "type": "object",
+  "required": ["id", "user_id", "name", "category", "quantity", "unit"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "user_id": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "category": { "type": "string", "enum": ["Flora", "Fauna", "Mineral", "Tool"] },
+    "quantity": { "type": "number", "minimum": 0 },
+    "unit": { "type": "string" },
+    "harvest_date": { "type": ["string", "null"], "format": "date-time" },
+    "lunar_phase": { "type": ["string", "null"] },
+    "min_threshold": { "type": "number", "minimum": 0, "default": 0 },
+    "shelf_life_days": { "type": ["integer", "null"] },
+    "notes": { "type": "string" }
+  }
+}

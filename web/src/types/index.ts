@@ -86,24 +86,41 @@ export interface BarterListing {
   created_at: string;
 }
 
+export interface VendorQuote {
+  id: string;
+  vendor_name: string;
+  vendor_url: string;
+  raw_price: number;
+  currency: string;
+  package_size: number;
+  package_unit: string;
+  normalized_price_per_100g: number;
+  shipping_estimate_days?: number;
+  rating: number; // 1 to 5
+  purity_certification: string; // e.g., 'USDA Organic', 'Kosher Certified', 'Wildcrafted Grade A'
+  in_stock: boolean;
+}
+
 export interface MarketItem {
   id: string;
   name: string;
   botanical_name?: string;
   category: PantryCategory;
-  unit_price: number;
+  unit_price: number; // default lowest price
   currency: string;
   unit: string;
   package_size: number;
   in_stock: boolean;
-  supplier_name: string;
+  supplier_name: string; // default lowest vendor
   provenance: string;
   ethical_harvest_grade: 'Wildcrafted' | 'Organic' | 'Artisanal' | 'EthicallySourced';
   description: string;
+  vendor_quotes?: VendorQuote[];
 }
 
 export interface MarketOrderItem {
   market_item: MarketItem;
+  selected_quote?: VendorQuote;
   order_quantity: number; // number of packages
   total_units: number;    // package_size * order_quantity
 }

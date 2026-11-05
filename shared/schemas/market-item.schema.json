@@ -2,21 +2,33 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "MarketItem",
   "type": "object",
-  "required": ["id", "name", "category", "unit_price", "unit", "in_stock", "provenance"],
+  "required": ["id", "name", "category", "in_stock", "vendor_quotes"],
   "properties": {
     "id": { "type": "string" },
     "name": { "type": "string" },
     "botanical_name": { "type": ["string", "null"] },
     "category": { "type": "string", "enum": ["Flora", "Fauna", "Mineral", "Tool"] },
-    "unit_price": { "type": "number", "minimum": 0 },
-    "currency": { "type": "string", "default": "USD" },
-    "unit": { "type": "string" },
-    "package_size": { "type": "number" },
+    "description": { "type": "string" },
     "in_stock": { "type": "boolean" },
-    "supplier_name": { "type": "string" },
-    "provenance": { "type": "string" },
-    "ethical_harvest_grade": { "type": "string" },
-    "description": { "type": "string" }
+    "vendor_quotes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["vendor_name", "vendor_url", "raw_price", "currency", "package_size", "package_unit", "normalized_price_per_100g"],
+        "properties": {
+          "vendor_name": { "type": "string" },
+          "vendor_url": { "type": "string" },
+          "raw_price": { "type": "number", "minimum": 0 },
+          "currency": { "type": "string", "default": "USD" },
+          "package_size": { "type": "number", "minimum": 0 },
+          "package_unit": { "type": "string" },
+          "normalized_price_per_100g": { "type": "number", "minimum": 0 },
+          "shipping_estimate_days": { "type": "integer" },
+          "rating": { "type": "number", "minimum": 0, "maximum": 5 },
+          "purity_certification": { "type": "string" },
+          "in_stock": { "type": "boolean" }
+        }
+      }
+    }
   }
 }
-
